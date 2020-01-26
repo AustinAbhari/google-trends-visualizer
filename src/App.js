@@ -1,25 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import Grid from './grid';
+import styled from 'styled-components';
 
-function App() {
+const StyledButton = styled.button`
+  position: absolute;
+  top: ${props => props.top || 0};
+  left: ${props => props.left || '10px'};
+  z-index: 4;
+`
+
+const StyledApp = styled.div`
+`;
+
+const App = () => {
+  const [row, setRow] = useState(1);
+  const [col, setCol] = useState(1);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <StyledApp>
+      <StyledButton onClick={() => setRow(row + 1)}> Row + </StyledButton>
+      <StyledButton onClick={() => setRow(row -1 )} top='30px'> Row - </StyledButton>
+      <StyledButton onClick={() => setCol(col + 1)} left='50px'> col +</StyledButton>
+      <StyledButton onClick={() => setCol(col - 1)} left='50px' top='30px'> col -</StyledButton>
+      <Grid col={col} row={row} />
+    </StyledApp>
   );
 }
 
