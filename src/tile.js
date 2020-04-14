@@ -6,7 +6,6 @@ import { randomNumber, aDiffRandom } from './helpers';
 /*
   to-do
   - add fade in - maybe scroll in on new div
-  - text sizes
   - color grid
   - grid updater
   -
@@ -23,7 +22,7 @@ const StyledTyping = styled.div`
   word-wrap: break-word;
   text-shadow: 0px 1px #000000;
   color: white;
-  padding-left: 0.2em;
+  padding: 0 0.3em;
   p {
     margin: 0;
     font-weight: 500;
@@ -51,42 +50,36 @@ const StyledTile = styled.div`
   position: relative;
 `;
 
-const StyledRightToLeft = styled.div`
+const StyledTranistion = styled.div`
   z-index: 2;
   position: absolute;
-  width: 0;
-  height: 100%;
   overflow: hidden;
   background: ${props => props.background};
-  animation: ${AnimationWidth} 500ms ease-in infinite;
+`;
+
+const StyledRightToLeft = styled(StyledTranistion)`
+  width: 0;
+  height: 100%;
+  animation: ${AnimationWidth} 510ms ease-in infinite;
   right: 0;
 `;
 
-const StyledLeftToRight = styled.div`
-  z-index: 2;
-  position: absolute;
+const StyledLeftToRight = styled(StyledTranistion)`
   width: 0;
   height: 100%;
-  background: ${props => props.background};
-  animation: ${AnimationWidth} 500ms ease-in infinite;
+  animation: ${AnimationWidth} 510ms ease-in infinite;
 `;
 
-const StyledTopToBottom = styled.div`
-  position: absolute;
-  z-index: 2;
+const StyledTopToBottom = styled(StyledTranistion)`
   width: 100%;
   height: 0;
-  background: ${props => props.background};
-  animation: ${AnimationHeight} 500ms ease-in infinite;
+  animation: ${AnimationHeight} 510ms ease-in infinite;
 `;
 
-const StyledBottomToTop = styled.div`
-  position: absolute;
-  z-index: 2;
+const StyledBottomToTop = styled(StyledTranistion)`
   width: 100%;
   height: 0;
-  background: ${props => props.background};
-  animation: ${AnimationHeight} 500ms ease-in infinite;
+  animation: ${AnimationHeight} 510ms ease-in infinite;
   bottom: 0;
 `;
 

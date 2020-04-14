@@ -10,13 +10,22 @@ const StyledGrid = styled.div`
   grid-template-rows: repeat(${props => props.rows || 5}, 1fr);
 `;
 
+const getNext = () => {
+
+}
+
 
 const renderTiles = (row, col) => {
   const tileCount = row * col;
   const tiles = [];
 
   for(let i = 0; i < tileCount; i++) {
-    tiles.push(<Tile total={row >= col ? row : col}/>)
+    tiles.push(
+      <Tile
+        id={`${row}-${col}`} 
+        total={row >= col ? row : col}
+      />
+    )
   }
 
   return tiles;
